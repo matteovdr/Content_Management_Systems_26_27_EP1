@@ -1,0 +1,21 @@
+uuid: b2260f33-b005-4024-9b0e-defb6b48ac3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.console
+    - field.storage.commerce_product.field_opslagcapaciteit
+  module:
+    - options
+id: commerce_product.console.field_opslagcapaciteit
+field_name: field_opslagcapaciteit
+entity_type: commerce_product
+bundle: console
+label: Opslagcapaciteit
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

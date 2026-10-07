@@ -1,0 +1,21 @@
+uuid: 72656e9f-f874-4ad7-8dd9-47f8146a50a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.game
+    - field.storage.commerce_product.field_pegi
+  module:
+    - options
+id: commerce_product.game.field_pegi
+field_name: field_pegi
+entity_type: commerce_product
+bundle: game
+label: PEGI
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

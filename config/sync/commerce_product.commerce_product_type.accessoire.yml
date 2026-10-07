@@ -1,0 +1,13 @@
+uuid: de3b7c88-e5bc-4374-a1ca-657280c0a4cd
+langcode: en
+status: true
+dependencies: {  }
+id: accessoire
+label: Accessoire
+traits: {  }
+locked: false
+description: ''
+variationTypes:
+  - hardware_variation
+multipleVariations: true
+injectVariationFields: true

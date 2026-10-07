@@ -5,12 +5,21 @@ dependencies:
   config:
     - commerce_product.commerce_product_type.game
     - field.field.commerce_product.game.body
+    - field.field.commerce_product.game.field_cover
     - field.field.commerce_product.game.field_genre
+    - field.field.commerce_product.game.field_multiplayer
+    - field.field.commerce_product.game.field_pegi
     - field.field.commerce_product.game.field_platform
     - field.field.commerce_product.game.field_productcategorie
+    - field.field.commerce_product.game.field_release_date
+    - field.field.commerce_product.game.field_trailer
     - field.field.commerce_product.game.field_uitgever
   module:
     - commerce_product
+    - datetime
+    - image
+    - link
+    - options
     - text
 id: commerce_product.game.default
 targetEntityType: commerce_product
@@ -24,6 +33,17 @@ content:
     third_party_settings: {  }
     weight: 11
     region: content
+  field_cover:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 20
+    region: content
   field_genre:
     type: entity_reference_label
     label: above
@@ -31,6 +51,23 @@ content:
       link: true
     third_party_settings: {  }
     weight: 12
+    region: content
+  field_multiplayer:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  field_pegi:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 17
     region: content
   field_platform:
     type: entity_reference_label
@@ -47,6 +84,27 @@ content:
       link: true
     third_party_settings: {  }
     weight: 14
+    region: content
+  field_release_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_trailer:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 19
     region: content
   field_uitgever:
     type: entity_reference_label

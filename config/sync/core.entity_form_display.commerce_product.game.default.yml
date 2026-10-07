@@ -5,12 +5,21 @@ dependencies:
   config:
     - commerce_product.commerce_product_type.game
     - field.field.commerce_product.game.body
+    - field.field.commerce_product.game.field_cover
     - field.field.commerce_product.game.field_genre
+    - field.field.commerce_product.game.field_multiplayer
+    - field.field.commerce_product.game.field_pegi
     - field.field.commerce_product.game.field_platform
     - field.field.commerce_product.game.field_productcategorie
+    - field.field.commerce_product.game.field_release_date
+    - field.field.commerce_product.game.field_trailer
     - field.field.commerce_product.game.field_uitgever
+    - image.style.thumbnail
   module:
     - commerce
+    - datetime
+    - image
+    - link
     - path
     - text
 id: commerce_product.game.default
@@ -34,6 +43,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_cover:
+    type: image_image
+    weight: 99
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
   field_genre:
     type: entity_reference_autocomplete
     weight: 91
@@ -43,6 +60,19 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_multiplayer:
+    type: boolean_checkbox
+    weight: 97
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_pegi:
+    type: options_select
+    weight: 96
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_platform:
     type: entity_reference_autocomplete
@@ -63,6 +93,20 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_release_date:
+    type: datetime_default
+    weight: 95
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_trailer:
+    type: link_default
+    weight: 98
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_uitgever:
     type: entity_reference_autocomplete

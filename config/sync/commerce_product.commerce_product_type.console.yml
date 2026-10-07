@@ -1,0 +1,13 @@
+uuid: a3998d6c-048f-4e43-b5f4-7f5a0de05148
+langcode: en
+status: true
+dependencies: {  }
+id: console
+label: Console
+traits: {  }
+locked: false
+description: ''
+variationTypes:
+  - hardware_variation
+multipleVariations: true
+injectVariationFields: true

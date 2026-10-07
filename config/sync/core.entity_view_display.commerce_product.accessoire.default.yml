@@ -1,0 +1,84 @@
+uuid: be618542-5f25-479f-90f0-438b8952dcfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.accessoire
+    - field.field.commerce_product.accessoire.body
+    - field.field.commerce_product.accessoire.field_cover
+    - field.field.commerce_product.accessoire.field_merk
+    - field.field.commerce_product.accessoire.field_platform
+    - field.field.commerce_product.accessoire.field_productcategorie
+  module:
+    - commerce_product
+    - image
+    - text
+id: commerce_product.accessoire.default
+targetEntityType: commerce_product
+bundle: accessoire
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_cover:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_merk:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_platform:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_productcategorie:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: -5
+    region: content
+  variations:
+    type: commerce_add_to_cart
+    label: above
+    settings:
+      combine: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden:
+  created: true
+  stores: true
+  uid: true

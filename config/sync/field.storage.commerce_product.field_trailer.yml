@@ -1,0 +1,19 @@
+uuid: 7a1ee186-9ab6-4c71-9322-d468a7ebdbfc
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+    - link
+id: commerce_product.field_trailer
+field_name: field_trailer
+entity_type: commerce_product
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

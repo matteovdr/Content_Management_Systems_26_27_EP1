@@ -1,0 +1,10 @@
+uuid: ccb1c3b3-6371-4234-81ce-ae998693ea67
+langcode: en
+status: true
+dependencies: {  }
+id: hardware_variation
+label: 'Hardware variation'
+traits: {  }
+locked: false
+orderItemType: default
+generateTitle: true

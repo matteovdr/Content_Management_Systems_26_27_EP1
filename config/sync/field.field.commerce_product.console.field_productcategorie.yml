@@ -1,0 +1,29 @@
+uuid: dfe12386-6b55-41a6-b143-da3635a2400b
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.console
+    - field.storage.commerce_product.field_productcategorie
+    - taxonomy.vocabulary.productcategorie
+id: commerce_product.console.field_productcategorie
+field_name: field_productcategorie
+entity_type: commerce_product
+bundle: console
+label: Productcategorie
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      productcategorie: productcategorie
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,29 @@
+uuid: 0affad5e-3711-40f6-ac5f-e47e9b4758eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.accessoire
+    - field.storage.commerce_product.field_platform
+    - taxonomy.vocabulary.platform
+id: commerce_product.accessoire.field_platform
+field_name: field_platform
+entity_type: commerce_product
+bundle: accessoire
+label: Platform
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      platform: platform
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,33 @@
+uuid: c45a4d91-a1c9-4fd4-a9f6-22cfb4b11716
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_product
+    - options
+id: commerce_product.field_opslagcapaciteit
+field_name: field_opslagcapaciteit
+entity_type: commerce_product
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 512_gb
+      label: '512 GB'
+    -
+      value: 825_gb
+      label: '825 GB'
+    -
+      value: 1_tb
+      label: '1 TB'
+    -
+      value: 2_tb
+      label: '2 TB'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
