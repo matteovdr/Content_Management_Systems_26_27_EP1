@@ -5,5 +5,5 @@ dependencies: {  }
 name: Platform
 vid: platform
 description: null
-weight: 0
+weight: -8
 new_revision: false

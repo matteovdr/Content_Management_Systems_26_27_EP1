@@ -1,0 +1,9 @@
+uuid: 7a1ea8ac-2cc4-48c7-bade-0780da8a4a7e
+langcode: en
+status: true
+dependencies: {  }
+name: Uitgever
+vid: uitgever
+description: null
+weight: 0
+new_revision: false
