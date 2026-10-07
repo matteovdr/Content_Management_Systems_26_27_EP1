@@ -1,0 +1,79 @@
+uuid: ccb1ec35-28be-4bd2-9453-baf24991d12a
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.game
+    - field.field.commerce_product.game.body
+    - field.field.commerce_product.game.field_genre
+    - field.field.commerce_product.game.field_platform
+    - field.field.commerce_product.game.field_productcategorie
+    - field.field.commerce_product.game.field_uitgever
+  module:
+    - commerce_product
+    - text
+id: commerce_product.game.default
+targetEntityType: commerce_product
+bundle: game
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_genre:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_platform:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_productcategorie:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_uitgever:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: -5
+    region: content
+  variations:
+    type: commerce_add_to_cart
+    label: above
+    settings:
+      combine: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden:
+  created: true
+  stores: true
+  uid: true

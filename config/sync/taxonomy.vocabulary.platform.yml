@@ -1,0 +1,9 @@
+uuid: 88437cbd-86be-4b20-8a91-00bf5caf9f7d
+langcode: en
+status: true
+dependencies: {  }
+name: Platform
+vid: platform
+description: null
+weight: -8
+new_revision: false

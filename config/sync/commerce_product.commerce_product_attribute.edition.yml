@@ -1,0 +1,7 @@
+uuid: 32d35c2d-d6cc-48aa-86e2-86c77f181071
+langcode: en
+status: true
+dependencies: {  }
+id: edition
+label: Edition
+elementType: select

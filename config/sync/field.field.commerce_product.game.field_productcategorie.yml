@@ -1,0 +1,29 @@
+uuid: 9801a113-7d72-4232-b068-64777c0aae0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.game
+    - field.storage.commerce_product.field_productcategorie
+    - taxonomy.vocabulary.productcategorie
+id: commerce_product.game.field_productcategorie
+field_name: field_productcategorie
+entity_type: commerce_product
+bundle: game
+label: Productcategorie
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      productcategorie: productcategorie
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

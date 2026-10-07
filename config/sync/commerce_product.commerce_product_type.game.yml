@@ -1,0 +1,13 @@
+uuid: ffbaaa81-f9be-41a9-af88-e189a9d55181
+langcode: en
+status: true
+dependencies: {  }
+id: game
+label: Game
+traits: {  }
+locked: false
+description: ''
+variationTypes:
+  - game_variation
+multipleVariations: true
+injectVariationFields: true

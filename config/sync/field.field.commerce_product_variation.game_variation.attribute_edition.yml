@@ -1,0 +1,24 @@
+uuid: 91bf7f4d-2a18-46b1-8a66-c8653b0a099e
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_attribute.edition
+    - commerce_product.commerce_product_variation_type.game_variation
+    - field.storage.commerce_product_variation.attribute_edition
+id: commerce_product_variation.game_variation.attribute_edition
+field_name: attribute_edition
+entity_type: commerce_product_variation
+bundle: game_variation
+label: Edition
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:commerce_product_attribute_value'
+  handler_settings:
+    target_bundles:
+      edition: edition
+field_type: entity_reference

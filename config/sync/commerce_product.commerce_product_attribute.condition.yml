@@ -1,0 +1,7 @@
+uuid: c7430f54-a2d2-436b-81cc-d88937f6f183
+langcode: en
+status: true
+dependencies: {  }
+id: condition
+label: Condition
+elementType: select

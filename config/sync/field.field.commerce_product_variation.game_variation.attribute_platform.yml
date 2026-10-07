@@ -1,0 +1,24 @@
+uuid: c4e1b020-5f54-4f9a-99a0-191f015dc53c
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_attribute.platform
+    - commerce_product.commerce_product_variation_type.game_variation
+    - field.storage.commerce_product_variation.attribute_platform
+id: commerce_product_variation.game_variation.attribute_platform
+field_name: attribute_platform
+entity_type: commerce_product_variation
+bundle: game_variation
+label: Platform
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:commerce_product_attribute_value'
+  handler_settings:
+    target_bundles:
+      platform: platform
+field_type: entity_reference

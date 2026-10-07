@@ -1,0 +1,10 @@
+uuid: 83718450-230a-4ecb-a952-ae9595e0a694
+langcode: en
+status: true
+dependencies: {  }
+id: game_variation
+label: 'Game variation'
+traits: {  }
+locked: false
+orderItemType: default
+generateTitle: true

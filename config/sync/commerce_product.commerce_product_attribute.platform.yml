@@ -1,0 +1,7 @@
+uuid: 92a2affd-032a-425e-9fed-e5e93edfcc93
+langcode: en
+status: true
+dependencies: {  }
+id: platform
+label: Platform
+elementType: select
