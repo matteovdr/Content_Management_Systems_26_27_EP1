@@ -1,0 +1,19 @@
+uuid: 25ba3106-b027-48f2-9c1b-32959c1dbc05
+langcode: en
+status: true
+dependencies: {  }
+id: overschrijving
+label: Overschrijving
+weight: null
+plugin: manual
+configuration:
+  display_label: Overschrijving
+  mode: n/a
+  payment_method_types:
+    - credit_card
+  collect_billing_information: true
+  instructions:
+    value: 'Maak het bedrag over naar BE00 0000 0000 0000 met vermelding van je bestelnummer. Je bestelling wordt verstuurd zodra de betaling is ontvangen.'
+    format: plain_text
+conditions: {  }
+conditionOperator: AND
