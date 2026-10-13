@@ -1,0 +1,9 @@
+uuid: 7ca9d764-32f8-4fd5-9c42-e62bd1234033
+langcode: en
+status: true
+dependencies: {  }
+id: shop_manager
+label: 'Shop manager'
+weight: 4
+is_admin: false
+permissions: {  }

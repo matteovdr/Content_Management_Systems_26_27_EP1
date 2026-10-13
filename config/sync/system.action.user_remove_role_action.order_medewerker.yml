@@ -1,0 +1,14 @@
+uuid: 06507160-e508-41d3-a847-b5fa025ed70e
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.order_medewerker
+  module:
+    - user
+id: user_remove_role_action.order_medewerker
+label: 'Remove the Order medewerker role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: order_medewerker

@@ -1,0 +1,9 @@
+uuid: a076e29c-cdaa-4f3d-992c-857b12dd91ef
+langcode: en
+status: true
+dependencies: {  }
+id: order_medewerker
+label: 'Order medewerker'
+weight: 5
+is_admin: false
+permissions: {  }
