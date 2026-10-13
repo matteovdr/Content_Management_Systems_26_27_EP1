@@ -9,9 +9,11 @@ dependencies:
     - commerce_order
     - commerce_payment
     - commerce_product
-    - file
+    - commerce_store
     - filter
+    - profile
     - system
+    - taxonomy
 _core:
   default_config_hash: wkW7P5A53YhGmsgamrmTbfwpZrqdnPYiJdoAZQtdmJg
 id: authenticated
@@ -21,8 +23,22 @@ is_admin: false
 permissions:
   - 'access checkout'
   - 'access content'
-  - 'delete own files'
+  - 'access user profiles'
+  - 'cancel account'
+  - 'create customer profile'
+  - 'delete own customer profile'
   - 'manage own commerce_payment_method'
+  - 'update own customer profile'
   - 'use text format basic_html'
+  - 'view accessoire commerce_product'
   - 'view commerce_product'
+  - 'view commerce_product_attribute'
+  - 'view commerce_store'
+  - 'view console commerce_product'
+  - 'view default commerce_product'
+  - 'view game commerce_product'
+  - 'view online commerce_store'
   - 'view own commerce_order'
+  - 'view own profile'
+  - 'view own unpublished profile'
+  - 'view vocabulary labels'

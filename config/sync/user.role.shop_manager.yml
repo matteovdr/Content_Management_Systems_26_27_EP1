@@ -2,14 +2,142 @@ uuid: 7ca9d764-32f8-4fd5-9c42-e62bd1234033
 langcode: en
 status: true
 dependencies:
+  config:
+    - block_content.type.basic
+    - filter.format.full_html
+    - taxonomy.vocabulary.genre
+    - taxonomy.vocabulary.platform
+    - taxonomy.vocabulary.productcategorie
+    - taxonomy.vocabulary.tags
+    - taxonomy.vocabulary.uitgever
   module:
+    - block_content
+    - commerce
     - commerce_order
+    - commerce_payment
     - commerce_product
+    - commerce_store
+    - contextual
+    - file
+    - filter
+    - help
+    - layout_builder
+    - navigation
+    - node
+    - path
+    - pathauto
+    - profile
+    - system
+    - taxonomy
 id: shop_manager
 label: 'Shop manager'
 weight: 4
 is_admin: false
 permissions:
+  - 'access administration pages'
+  - 'access block library'
+  - 'access commerce administration pages'
+  - 'access commerce_order overview'
+  - 'access commerce_product overview'
+  - 'access commerce_product_attribute overview'
+  - 'access commerce_store overview'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access files overview'
+  - 'access help pages'
+  - 'access navigation'
+  - 'access profile overview'
+  - 'access taxonomy overview'
+  - 'access user profiles'
+  - 'administer commerce_payment'
+  - 'administer menu'
+  - 'administer node published status'
+  - 'create accessoire commerce_product'
+  - 'create and edit custom blocks'
+  - 'create basic block content'
+  - 'create commerce_product_attribute'
+  - 'create console commerce_product'
+  - 'create default commerce_order'
+  - 'create default commerce_product'
+  - 'create game commerce_product'
+  - 'create terms in genre'
+  - 'create terms in platform'
+  - 'create terms in productcategorie'
+  - 'create terms in tags'
+  - 'create terms in uitgever'
+  - 'create url aliases'
+  - 'delete all revisions'
+  - 'delete any accessoire commerce_product'
+  - 'delete any basic block content'
+  - 'delete any basic block content revisions'
+  - 'delete any console commerce_product'
+  - 'delete any customer profile'
+  - 'delete any default commerce_product'
+  - 'delete any game commerce_product'
+  - 'delete commerce_product_attribute'
+  - 'delete default commerce_order'
+  - 'delete own accessoire commerce_product'
+  - 'delete own console commerce_product'
+  - 'delete own default commerce_product'
+  - 'delete own files'
+  - 'delete own game commerce_product'
+  - 'delete term revisions in genre'
+  - 'delete term revisions in platform'
+  - 'delete term revisions in productcategorie'
+  - 'delete term revisions in tags'
+  - 'delete term revisions in uitgever'
+  - 'delete terms in genre'
+  - 'delete terms in platform'
+  - 'delete terms in productcategorie'
+  - 'delete terms in tags'
+  - 'delete terms in uitgever'
+  - 'edit any basic block content'
+  - 'edit terms in genre'
+  - 'edit terms in platform'
+  - 'edit terms in productcategorie'
+  - 'edit terms in tags'
+  - 'edit terms in uitgever'
+  - 'manage default commerce_order_item'
+  - 'manage default commerce_product_variation'
   - 'manage game_variation commerce_product_variation'
   - 'manage hardware_variation commerce_product_variation'
+  - 'notify of path changes'
   - 'reassign commerce_order'
+  - 'revert all revisions'
+  - 'revert any basic block content revisions'
+  - 'revert term revisions in genre'
+  - 'revert term revisions in platform'
+  - 'revert term revisions in productcategorie'
+  - 'revert term revisions in tags'
+  - 'revert term revisions in uitgever'
+  - 'unlock orders'
+  - 'update any accessoire commerce_product'
+  - 'update any console commerce_product'
+  - 'update any customer profile'
+  - 'update any default commerce_product'
+  - 'update any game commerce_product'
+  - 'update any online commerce_store'
+  - 'update commerce_product_attribute'
+  - 'update default commerce_order'
+  - 'update own accessoire commerce_product'
+  - 'update own console commerce_product'
+  - 'update own default commerce_product'
+  - 'update own game commerce_product'
+  - 'update own online commerce_store'
+  - 'use text format full_html'
+  - 'view all revisions'
+  - 'view any basic block content history'
+  - 'view any customer profile'
+  - 'view any profile'
+  - 'view commerce_order'
+  - 'view default commerce_order'
+  - 'view own unpublished commerce_product'
+  - 'view own unpublished commerce_store'
+  - 'view term revisions in genre'
+  - 'view term revisions in platform'
+  - 'view term revisions in productcategorie'
+  - 'view term revisions in tags'
+  - 'view term revisions in uitgever'
+  - 'view the administration theme'
+  - 'view unpublished block content'
+  - 'view user email addresses'

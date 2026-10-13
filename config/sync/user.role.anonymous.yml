@@ -7,8 +7,10 @@ dependencies:
   module:
     - commerce_checkout
     - commerce_product
+    - commerce_store
     - filter
     - system
+    - taxonomy
 _core:
   default_config_hash: Tus1ZTNXKIOnrennR1hnTbc7wUPBXHTUm5UdCpEhJSk
 id: anonymous
@@ -19,4 +21,12 @@ permissions:
   - 'access checkout'
   - 'access content'
   - 'use text format restricted_html'
+  - 'view accessoire commerce_product'
   - 'view commerce_product'
+  - 'view commerce_product_attribute'
+  - 'view commerce_store'
+  - 'view console commerce_product'
+  - 'view default commerce_product'
+  - 'view game commerce_product'
+  - 'view online commerce_store'
+  - 'view vocabulary labels'

@@ -3,13 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - node.type.basic_page
     - taxonomy.vocabulary.tags
   module:
+    - block_content
     - contextual
     - file
+    - help
+    - layout_builder
     - navigation
     - node
     - path
+    - pathauto
     - system
     - taxonomy
 _core:
@@ -23,13 +29,21 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
+  - 'access help pages'
   - 'access navigation'
-  - 'administer url aliases'
+  - 'create and edit custom blocks'
+  - 'create basic block content'
+  - 'create basic_page content'
   - 'create terms in tags'
   - 'create url aliases'
   - 'delete own files'
+  - 'edit any basic block content'
+  - 'edit any basic_page content'
+  - 'edit own basic_page content'
   - 'edit terms in tags'
+  - 'notify of path changes'
   - 'revert all revisions'
   - 'view all revisions'
   - 'view own unpublished content'
   - 'view the administration theme'
+  - 'view unpublished block content'

@@ -1,9 +1,32 @@
 uuid: a076e29c-cdaa-4f3d-992c-857b12dd91ef
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - commerce
+    - commerce_order
+    - help
+    - navigation
+    - node
+    - profile
+    - system
 id: order_medewerker
 label: 'Order medewerker'
 weight: 5
 is_admin: false
-permissions: {  }
+permissions:
+  - 'access administration pages'
+  - 'access commerce administration pages'
+  - 'access commerce_order overview'
+  - 'access content overview'
+  - 'access help pages'
+  - 'access navigation'
+  - 'access profile overview'
+  - 'access user profiles'
+  - 'update default commerce_order'
+  - 'view any customer profile'
+  - 'view any profile'
+  - 'view commerce_order'
+  - 'view default commerce_order'
+  - 'view the administration theme'
+  - 'view user email addresses'
