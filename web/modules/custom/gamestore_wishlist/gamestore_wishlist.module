@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Hooks voor de Gamestore Wishlist module.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_ENTITY_TYPE_view() for commerce_product.
+ */
+function gamestore_wishlist_commerce_product_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($view_mode !== 'full') {
+    return;
+  }
+
+  $account = \Drupal::currentUser();
+  if (!$account->hasPermission('use gamestore wishlist')) {
+    return;
+  }
+
+  $build['wishlist_link'] = [
+    '#type' => 'link',
+    '#title' => t('Voeg toe aan wishlist'),
+    '#url' => Url::fromRoute('gamestore_wishlist.toggle', ['product_id' => $entity->id()]),
+    '#attributes' => ['class' => ['button', 'button--primary']],
+    '#weight' => 100,
+    '#cache' => ['contexts' => ['user.permissions']],
+  ];
+}
+

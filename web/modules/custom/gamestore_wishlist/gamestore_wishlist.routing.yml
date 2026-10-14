@@ -4,7 +4,7 @@ gamestore_wishlist.toggle:
     _controller: '\Drupal\gamestore_wishlist\Controller\WishlistController::toggle'
     _title: 'Toggle wishlist item'
   requirements:
-    _user_is_logged_in: 'TRUE'
+    _permission: 'use gamestore wishlist'
     product_id: '\d+'
 
 gamestore_wishlist.list:
@@ -13,4 +13,4 @@ gamestore_wishlist.list:
     _controller: '\Drupal\gamestore_wishlist\Controller\WishlistController::list'
     _title: 'Mijn wishlist'
   requirements:
-    _user_is_logged_in: 'TRUE'
+    _permission: 'use gamestore wishlist'

@@ -11,6 +11,7 @@ dependencies:
     - commerce_product
     - commerce_store
     - filter
+    - gamestore_wishlist
     - profile
     - system
     - taxonomy
@@ -29,6 +30,7 @@ permissions:
   - 'delete own customer profile'
   - 'manage own commerce_payment_method'
   - 'update own customer profile'
+  - 'use gamestore wishlist'
   - 'use text format basic_html'
   - 'view accessoire commerce_product'
   - 'view commerce_product'
