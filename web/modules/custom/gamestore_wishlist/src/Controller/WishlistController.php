@@ -4,12 +4,13 @@ namespace Drupal\gamestore_wishlist\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Link;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
- * Handles adding and removing wishlist items.
+ * Handles adding, removing and listing wishlist items.
  */
 class WishlistController extends ControllerBase {
 
@@ -66,6 +67,55 @@ class WishlistController extends ControllerBase {
     }
 
     return new RedirectResponse(Url::fromUserInput('/producten')->toString());
+  }
+
+  /**
+   * Shows the wishlist of the current user.
+   */
+  public function list() {
+    $uid = (int) $this->currentUser()->id();
+
+    $items = $this->database->select('gamestore_wishlist', 'w')
+      ->fields('w', ['product_id', 'created'])
+      ->condition('uid', $uid)
+      ->orderBy('created', 'DESC')
+      ->execute()
+      ->fetchAll();
+
+    $storage = $this->entityTypeManager()->getStorage('commerce_product');
+    $date_formatter = \Drupal::service('date.formatter');
+    $rows = [];
+
+    foreach ($items as $item) {
+      $product = $storage->load($item->product_id);
+      if (!$product) {
+        continue;
+      }
+      $remove_url = Url::fromRoute('gamestore_wishlist.toggle', ['product_id' => $product->id()], [
+        'query' => ['destination' => '/wishlist'],
+      ]);
+      $rows[] = [
+        ['data' => $product->toLink()->toRenderable()],
+        $date_formatter->format($item->created, 'short'),
+        ['data' => Link::fromTextAndUrl($this->t('Remove'), $remove_url)->toRenderable()],
+      ];
+    }
+
+    if (empty($rows)) {
+      return [
+        '#markup' => '<p>' . $this->t('Your wishlist is empty. Browse our <a href=":url">products</a>.', [
+          ':url' => Url::fromUserInput('/producten')->toString(),
+        ]) . '</p>',
+        '#cache' => ['max-age' => 0],
+      ];
+    }
+
+    return [
+      '#type' => 'table',
+      '#header' => [$this->t('Product'), $this->t('Added on'), $this->t('Actions')],
+      '#rows' => $rows,
+      '#cache' => ['max-age' => 0],
+    ];
   }
 
 }

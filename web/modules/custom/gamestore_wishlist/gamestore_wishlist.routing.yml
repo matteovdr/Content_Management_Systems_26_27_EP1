@@ -6,3 +6,11 @@ gamestore_wishlist.toggle:
   requirements:
     _user_is_logged_in: 'TRUE'
     product_id: '\d+'
+
+gamestore_wishlist.list:
+  path: '/wishlist'
+  defaults:
+    _controller: '\Drupal\gamestore_wishlist\Controller\WishlistController::list'
+    _title: 'Mijn wishlist'
+  requirements:
+    _user_is_logged_in: 'TRUE'
