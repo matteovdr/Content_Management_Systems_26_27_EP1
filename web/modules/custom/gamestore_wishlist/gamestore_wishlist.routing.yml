@@ -1,0 +1,8 @@
+gamestore_wishlist.toggle:
+  path: '/wishlist/toggle/{product_id}'
+  defaults:
+    _controller: '\Drupal\gamestore_wishlist\Controller\WishlistController::toggle'
+    _title: 'Toggle wishlist item'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+    product_id: '\d+'
