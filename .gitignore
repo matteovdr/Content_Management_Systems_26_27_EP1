@@ -1,3 +1,4 @@
 backups/
 set-perms.sh
 scripts/
+backup.sql.gz
