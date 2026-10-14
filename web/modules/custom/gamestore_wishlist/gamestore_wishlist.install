@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for Game Store Wishlist.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function gamestore_wishlist_schema() {
+  $schema['gamestore_wishlist'] = [
+    'description' => 'Stores the products a user has added to their wishlist.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary key.',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The user who owns the wishlist item.',
+      ],
+      'product_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The commerce product that was added.',
+      ],
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Timestamp of when the item was added.',
+      ],
+    ],
+    'primary key' => ['id'],
+    'unique keys' => [
+      'user_product' => ['uid', 'product_id'],
+    ],
+    'indexes' => [
+      'uid' => ['uid'],
+    ],
+  ];
+
+  return $schema;
+}

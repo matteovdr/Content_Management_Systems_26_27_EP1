@@ -1,0 +1,7 @@
+name: 'Game Store Wishlist'
+type: module
+description: 'Laat klanten games als favoriet markeren en bekijken op een eigen wishlist-pagina.'
+package: 'Game Store'
+core_version_requirement: ^10 || ^11
+dependencies:
+  - commerce_product:commerce_product
