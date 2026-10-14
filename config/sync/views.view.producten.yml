@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.storage.commerce_product.field_cover
     - field.storage.commerce_product.field_productcategorie
-    - image.style.medium
+    - image.style.product_card
     - taxonomy.vocabulary.genre
     - taxonomy.vocabulary.platform
     - taxonomy.vocabulary.productcategorie
@@ -149,7 +149,7 @@ display:
           type: image
           settings:
             image_link: ''
-            image_style: medium
+            image_style: product_card
             image_loading:
               attribute: lazy
           group_column: ''
@@ -548,7 +548,16 @@ display:
           limit: true
           error_message: true
       style:
-        type: default
+        type: grid
+        options:
+          grouping: {  }
+          columns: 3
+          automatic_width: true
+          alignment: horizontal
+          row_class_custom: ''
+          row_class_default: true
+          col_class_custom: ''
+          col_class_default: true
       row:
         type: fields
       query:

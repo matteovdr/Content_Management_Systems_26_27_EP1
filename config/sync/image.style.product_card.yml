@@ -1,0 +1,15 @@
+uuid: ba02c48f-87fa-47c7-a7a6-eeba6a52c553
+langcode: en
+status: true
+dependencies: {  }
+name: product_card
+label: 'Product card'
+effects:
+  84653d44-97c5-4fe7-b3c6-cd1994d778f0:
+    uuid: 84653d44-97c5-4fe7-b3c6-cd1994d778f0
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 200
+      height: 200
+      anchor: center-center
