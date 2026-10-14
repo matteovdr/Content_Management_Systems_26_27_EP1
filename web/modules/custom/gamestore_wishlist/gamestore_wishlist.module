@@ -9,9 +9,6 @@ use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
 
-/**
- * Implements hook_ENTITY_TYPE_view() for commerce_product.
- */
 function gamestore_wishlist_commerce_product_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
   if ($view_mode !== 'full') {
     return;
@@ -22,13 +19,23 @@ function gamestore_wishlist_commerce_product_view(array &$build, EntityInterface
     return;
   }
 
+  // Controleer of dit product al op de wishlist van deze gebruiker staat.
+  $in_wishlist = (bool) \Drupal::database()->select('gamestore_wishlist', 'w')
+    ->fields('w', ['id'])
+    ->condition('uid', $account->id())
+    ->condition('product_id', $entity->id())
+    ->execute()
+    ->fetchField();
+
   $build['wishlist_link'] = [
     '#type' => 'link',
-    '#title' => t('Voeg toe aan wishlist'),
+    '#title' => $in_wishlist ? t('Verwijder van wishlist') : t('Voeg toe aan wishlist'),
     '#url' => Url::fromRoute('gamestore_wishlist.toggle', ['product_id' => $entity->id()]),
-    '#attributes' => ['class' => ['button', 'button--primary']],
+    '#attributes' => ['class' => ['button', $in_wishlist ? 'button--danger' : 'button--primary']],
     '#weight' => 100,
-    '#cache' => ['contexts' => ['user.permissions']],
+    '#cache' => [
+      'contexts' => ['user'],
+      'max-age' => 0,
+    ],
   ];
 }
-
