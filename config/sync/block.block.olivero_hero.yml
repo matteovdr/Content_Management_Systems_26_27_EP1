@@ -12,7 +12,7 @@ dependencies:
 id: olivero_hero
 theme: olivero
 region: content
-weight: -6
+weight: -7
 provider: null
 plugin: 'block_content:f03e3863-39ea-4b8a-90f1-86447be0e798'
 settings:
