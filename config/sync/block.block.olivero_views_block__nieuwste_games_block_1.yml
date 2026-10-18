@@ -1,0 +1,29 @@
+uuid: 6a15a9ad-11a1-4478-ba1d-89fa0505cf84
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.nieuwste_games
+  module:
+    - system
+    - views
+  theme:
+    - olivero
+id: olivero_views_block__nieuwste_games_block_1
+theme: olivero
+region: content
+weight: -5
+provider: null
+plugin: 'views_block:nieuwste_games-block_1'
+settings:
+  id: 'views_block:nieuwste_games-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: null
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

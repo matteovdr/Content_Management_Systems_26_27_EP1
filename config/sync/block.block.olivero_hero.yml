@@ -1,0 +1,28 @@
+uuid: 5c3a881b-e638-4f63-a6b8-a970cab49f90
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:f03e3863-39ea-4b8a-90f1-86447be0e798'
+  module:
+    - block_content
+    - system
+  theme:
+    - olivero
+id: olivero_hero
+theme: olivero
+region: content
+weight: -6
+provider: null
+plugin: 'block_content:f03e3863-39ea-4b8a-90f1-86447be0e798'
+settings:
+  id: 'block_content:f03e3863-39ea-4b8a-90f1-86447be0e798'
+  label: Hero
+  label_display: visible
+  provider: block_content
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'
