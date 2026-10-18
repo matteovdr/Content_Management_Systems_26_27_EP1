@@ -4,6 +4,7 @@ namespace Drupal\Tests\commerce_order\Kernel\Entity;
 
 use Drupal\Tests\commerce_order\Kernel\OrderKernelTestBase;
 use Drupal\commerce_order\Adjustment;
+use Drupal\commerce_order\Entity\Order;
 use Drupal\commerce_order\Entity\OrderItem;
 use Drupal\commerce_price\Price;
 
@@ -163,6 +164,106 @@ class OrderItemTest extends OrderKernelTestBase {
     $this->assertEquals(new Price('21.98', 'USD'), $order_item->getAdjustedTotalPrice());
     $this->assertEquals(new Price('17.98', 'USD'), $order_item->getAdjustedTotalPrice(['custom']));
     $this->assertEquals(new Price('23.98', 'USD'), $order_item->getAdjustedTotalPrice(['fee']));
+  }
+
+  /**
+   * Tests price calculating on a zero quantity order item with an adjustment.
+   *
+   * @covers ::getAdjustedUnitPrice
+   */
+  public function testApplyAdjustmentOnZeroQuantityOrderItem() {
+    // Create an order item.
+    $order_item = OrderItem::create([
+      'type' => 'test',
+      'quantity' => 1,
+      'unit_price' => new Price('9.99', 'USD'),
+      'adjustments' => [
+        new Adjustment([
+          'type' => 'fee',
+          'label' => 'Random fee',
+          'amount' => new Price('2.00', 'USD'),
+        ]),
+      ],
+    ]);
+    // The total price isn't calculated until the order item is saved.
+    $this->assertNull($order_item->getTotalPrice());
+    $this->assertNull($order_item->getAdjustedUnitPrice());
+    $order_item->save();
+    $this->assertEquals(new Price('11.99', 'USD'), $order_item->getAdjustedUnitPrice());
+
+    // Set the order item's quantity to zero.
+    $order_item->setQuantity('0');
+    $this->assertEquals(new Price('0.00', 'USD'), $order_item->getAdjustedUnitPrice());
+  }
+
+  /**
+   * Tests the URLs of order items, with and without an order.
+   *
+   * @covers ::toUrl
+   */
+  public function testToUrl() {
+    $order_item = OrderItem::create([
+      'type' => 'test',
+      'quantity' => 1,
+      'unit_price' => new Price('9.99', 'USD'),
+    ]);
+    $order_item->save();
+
+    // Every order item link nested under the parent order is unavailable.
+    $order_links = [];
+    foreach ($order_item->getEntityType()->getLinkTemplates() as $rel => $link_template) {
+      if (str_contains($link_template, '{commerce_order}')) {
+        $order_links[] = $rel;
+      }
+    }
+    $this->assertContains('duplicate-form', $order_links);
+    foreach ([NULL, ...$order_links] as $rel) {
+      $url = $order_item->toUrl($rel);
+      $this->assertEquals('<nolink>', $url->getRouteName());
+      $this->assertEquals('', $url->toString());
+    }
+
+    $order = Order::create([
+      'type' => 'default',
+      'store_id' => $this->store->id(),
+      'state' => 'draft',
+      'order_items' => [$order_item],
+    ]);
+    $order->save();
+    $order_item = $this->reloadEntity($order_item);
+    $this->assertEquals($order->id(), $order_item->getOrderId());
+
+    $expected_paths = [
+      'edit-form' => 'edit',
+      'delete-form' => 'delete',
+      'duplicate-form' => 'duplicate',
+    ];
+    foreach ($expected_paths as $rel => $path) {
+      $expected_url = sprintf('/admin/commerce/orders/%s/items/%s/%s', $order->id(), $order_item->id(), $path);
+      $this->assertEquals($expected_url, $order_item->toUrl($rel)->toString());
+    }
+  }
+
+  /**
+   * Tests deleting an order item that doesn't belong to an order.
+   *
+   * @covers ::toUrl
+   */
+  public function testDeleteWithoutOrder() {
+    // Needed to confirm that URL generation doesn't cause a crash when deleting
+    // an order item without an order, as menu_link_content_entity_predelete()
+    // generates the URL of every link template.
+    $this->enableModules(['link', 'menu_link_content']);
+    $this->installEntitySchema('menu_link_content');
+
+    $order_item = OrderItem::create([
+      'type' => 'test',
+      'quantity' => 1,
+      'unit_price' => new Price('9.99', 'USD'),
+    ]);
+    $order_item->save();
+    $order_item->delete();
+    $this->assertNull(OrderItem::load($order_item->id()));
   }
 
   /**

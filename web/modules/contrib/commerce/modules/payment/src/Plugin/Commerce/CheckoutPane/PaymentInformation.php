@@ -13,6 +13,7 @@ use Drupal\commerce_payment\PaymentMethodStorageInterface;
 use Drupal\commerce_payment\PaymentOption;
 use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\SupportsCreatingPaymentMethodsInterface;
 use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\SupportsStoredPaymentMethodsInterface;
+use Drupal\profile\Entity\ProfileInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -155,16 +156,15 @@ class PaymentInformation extends PaymentCheckoutPaneBase {
       $summary = $view_builder->view($payment_method, 'default');
     }
     else {
-      if ($payment_gateway) {
-        $summary = [
-          'payment_gateway' => [
-            '#markup' => $payment_gateway->getPlugin()->getDisplayLabel(),
-          ],
-        ];
-      }
       if ($billing_profile) {
         $view_builder = $this->entityTypeManager->getViewBuilder('profile');
         $summary['profile'] = $view_builder->view($billing_profile, 'default');
+      }
+      if ($payment_gateway) {
+        $summary['payment_gateway'] = [
+          '#theme' => 'commerce_payment_information_gateway_summary',
+          '#payment_gateway' => $payment_gateway,
+        ];
       }
     }
 
@@ -462,19 +462,7 @@ class PaymentInformation extends PaymentCheckoutPaneBase {
           $payment_method_profile->save();
         }
         else {
-          $billing_profile = $this->order->getBillingProfile();
-          if (!$billing_profile) {
-            $billing_profile = $this->entityTypeManager->getStorage('profile')->create([
-              'type' => 'customer',
-              'uid' => 0,
-            ]);
-          }
-          $billing_profile->populateFromProfile($payment_method_profile);
-          // The data field is not copied by default but needs to be.
-          // For example, both profiles need to have an address_book_profile_id.
-          $billing_profile->populateFromProfile($payment_method_profile, ['data']);
-          $billing_profile->save();
-          $this->order->setBillingProfile($billing_profile);
+          $this->copyPaymentMethodBillingProfile($payment_method_profile);
         }
       }
     }
@@ -487,7 +475,11 @@ class PaymentInformation extends PaymentCheckoutPaneBase {
         /** @var \Drupal\commerce_payment\Entity\PaymentMethodInterface $payment_method */
         $this->order->set('payment_gateway', $payment_method->getPaymentGateway());
         $this->order->set('payment_method', $payment_method);
-        $this->order->setBillingProfile($payment_method->getBillingProfile());
+        // A gateway that does not collect billing information stores its
+        // payment methods without a billing profile.
+        if ($payment_method_profile = $payment_method->getBillingProfile()) {
+          $this->copyPaymentMethodBillingProfile($payment_method_profile);
+        }
       }
       // The new payment method is created when the transaction processes.
       else {
@@ -499,6 +491,32 @@ class PaymentInformation extends PaymentCheckoutPaneBase {
       $this->order->set('payment_gateway', $payment_gateway);
       $this->order->set('payment_method', NULL);
     }
+  }
+
+  /**
+   * Copies the payment method's billing information to the order.
+   *
+   * The order must never reference the payment method's profile. Otherwise,
+   * changing the order's billing information would also change the payment
+   * method's, and the billing information of every other order paid with it.
+   *
+   * @param \Drupal\profile\Entity\ProfileInterface $payment_method_profile
+   *   The payment method's billing profile.
+   */
+  protected function copyPaymentMethodBillingProfile(ProfileInterface $payment_method_profile): void {
+    $billing_profile = $this->order->getBillingProfile();
+    if (!$billing_profile || $billing_profile->id() == $payment_method_profile->id()) {
+      $billing_profile = $this->entityTypeManager->getStorage('profile')->create([
+        'type' => 'customer',
+        'uid' => 0,
+      ]);
+    }
+    $billing_profile->populateFromProfile($payment_method_profile);
+    // The data field is not copied by default but needs to be.
+    // For example, both profiles need to have an address_book_profile_id.
+    $billing_profile->populateFromProfile($payment_method_profile, ['data']);
+    $billing_profile->save();
+    $this->order->setBillingProfile($billing_profile);
   }
 
   /**
