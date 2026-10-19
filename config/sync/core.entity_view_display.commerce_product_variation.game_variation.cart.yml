@@ -1,0 +1,32 @@
+uuid: d78e042f-df45-43f4-a542-d73a134407ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.game_variation
+    - core.entity_view_mode.commerce_product_variation.cart
+    - field.field.commerce_product_variation.game_variation.attribute_condition
+    - field.field.commerce_product_variation.game_variation.attribute_edition
+    - field.field.commerce_product_variation.game_variation.attribute_platform
+id: commerce_product_variation.game_variation.cart
+targetEntityType: commerce_product_variation
+bundle: game_variation
+mode: cart
+content:
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  attribute_condition: true
+  attribute_edition: true
+  attribute_platform: true
+  list_price: true
+  price: true
+  product_id: true
+  sku: true
