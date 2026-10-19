@@ -1,0 +1,79 @@
+/* ===== Kleurenpalet: pas enkel hier de kleuren aan ===== */
+:root {
+  --gs-bg: #0f1226;
+  --gs-surface: #1a1e3a;
+  --gs-primary: #7c3aed;
+  --gs-accent: #22d3ee;
+  --gs-text: #e5e7eb;
+  --gs-price: #facc15;
+}
+
+/* ===== Achtergronden (Olivero zet zelf wit/zwart) ===== */
+html,
+body,
+.page-wrapper,
+#page,
+.dialog-off-canvas-main-canvas,
+.layout-container,
+.layout-main-wrapper,
+.layout-main,
+.main-content,
+.main-content__inner,
+.site-header,
+.site-header__inner,
+.site-header__fixable,
+.header-nav,
+.primary-nav {
+  background-color: var(--gs-bg) !important;
+  background-image: none !important;
+  color: var(--gs-text);
+}
+
+/* Lege onderdelen verbergen */
+.social-bar,
+.site-footer {
+  display: none !important;
+}
+
+/* ===== Tekst en links ===== */
+h1, h2, h3, .block__title {
+  color: #fff;
+}
+
+a,
+.region--content a {
+  color: var(--gs-accent);
+}
+
+.views-field,
+.field,
+.field__label,
+.field__item {
+  color: var(--gs-text);
+}
+
+/* ===== Menu ===== */
+.primary-nav__menu-link,
+.secondary-nav__menu-link {
+  color: #fff !important;
+}
+
+.primary-nav__menu-link:hover,
+.primary-nav__menu-link:focus {
+  color: var(--gs-accent) !important;
+}
+
+/* ===== Knoppen ===== */
+.button,
+input[type="submit"] {
+  background: var(--gs-primary);
+  color: #fff;
+  border-color: var(--gs-primary);
+}
+
+/* ===== Prijs ===== */
+.field--name-price,
+.views-field-price__number {
+  color: var(--gs-price);
+  font-weight: 700;
+}

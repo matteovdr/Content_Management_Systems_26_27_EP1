@@ -1,0 +1,9 @@
+name: Gamestore Theme
+type: theme
+description: 'Subtheme van Olivero voor de Game Store.'
+package: Custom
+core_version_requirement: ^11
+base theme: olivero
+
+libraries:
+  - gamestore_theme/global-styling
