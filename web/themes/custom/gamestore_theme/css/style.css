@@ -77,3 +77,36 @@ input[type="submit"] {
   color: var(--gs-price);
   font-weight: 700;
 }
+
+/* ===== Mobiel ===== */
+
+/* Grids: 2 kolommen op gsm, 3 op tablet */
+.views-view-grid {
+  --views-grid--column-count: 2 !important;
+}
+
+@media (min-width: 600px) {
+  .views-view-grid {
+    --views-grid--column-count: 3 !important;
+  }
+}
+
+@media (min-width: 900px) {
+  .views-view-grid {
+    --views-grid--column-count: 4 !important;
+  }
+}
+
+/* Afbeeldingen vullen de kolom */
+.views-view-grid img {
+  width: 100%;
+  height: auto;
+}
+
+/* Geopend mobiel menu: donkere balk bovenaan */
+.header-nav,
+.header-nav__inner,
+.mobile-nav-button,
+.header-nav .mobile-buttons {
+  background-color: var(--gs-bg) !important;
+}
