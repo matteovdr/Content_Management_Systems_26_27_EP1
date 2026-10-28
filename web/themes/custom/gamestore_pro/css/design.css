@@ -1,0 +1,217 @@
+/* ===== Design tokens: pas enkel hier de kleuren aan ===== */
+:root {
+  --gs-bg: #0e1114;
+  --gs-surface: #161b20;
+  --gs-border: #262d35;
+  --gs-text: #f2f4f6;
+  --gs-muted: #8b95a1;
+  --gs-accent: #ff8a00;
+  --gs-accent-hover: #ffa033;
+  --gs-radius: 8px;
+  --gs-max: 1300px;
+  --gs-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--gs-bg); }
+
+body {
+  margin: 0;
+  background: var(--gs-bg);
+  color: var(--gs-text);
+  font-family: var(--gs-font);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+a { color: var(--gs-text); text-decoration: none; }
+a:hover { color: var(--gs-accent); }
+
+h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* Buttons */
+.button,
+input[type="submit"],
+button.form-submit {
+  display: inline-block;
+  background: var(--gs-accent);
+  color: #111;
+  border: 0;
+  border-radius: var(--gs-radius);
+  padding: 0.7rem 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.button:hover,
+input[type="submit"]:hover { background: var(--gs-accent-hover); color: #111; }
+
+/* Formulieren */
+input[type="text"], input[type="email"], input[type="search"],
+input[type="number"], input[type="password"], select, textarea {
+  background: var(--gs-surface);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-radius);
+  padding: 0.6rem 0.8rem;
+  font: inherit;
+}
+
+/* ===== Layout ===== */
+.gs-container {
+  width: 100%;
+  max-width: var(--gs-max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.gs-page { min-height: 100vh; display: flex; flex-direction: column; }
+.gs-main { flex: 1; padding: 2rem 0 3rem; }
+.gs-main__inner { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+@media (min-width: 900px) {
+  .gs-main__inner:has(.gs-sidebar) { grid-template-columns: 1fr 280px; }
+}
+
+/* ===== Header ===== */
+.gs-header {
+  background: var(--gs-surface);
+  border-bottom: 1px solid var(--gs-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.gs-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 64px;
+  flex-wrap: wrap;
+}
+
+.gs-brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 800; font-size: 1.25rem; color: var(--gs-text); }
+.gs-brand__mark {
+  display: grid; place-items: center;
+  width: 36px; height: 36px;
+  background: var(--gs-accent); color: #111;
+  border-radius: 8px; font-weight: 900;
+}
+
+.gs-nav { flex: 1; }
+.gs-nav ul, .gs-account ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.gs-nav a, .gs-account a { color: var(--gs-text); font-weight: 600; padding: 0.4rem 0; }
+.gs-nav a:hover, .gs-account a:hover,
+.gs-nav a.is-active { color: var(--gs-accent); }
+
+.gs-account { display: flex; align-items: center; gap: 1rem; }
+.gs-account h2, .gs-nav h2 { display: none; }
+
+/* ===== Footer ===== */
+.gs-footer { border-top: 1px solid var(--gs-border); background: var(--gs-surface); color: var(--gs-muted); padding: 1.5rem 0; font-size: 0.9rem; }
+.gs-footer p { margin: 0; }
+
+/* ===== Header-fixes ===== */
+.gs-nav a.is-active,
+.gs-nav a[aria-current="page"] { color: var(--gs-accent); }
+.gs-account .cart--cart-block { font-size: 0.9rem; }
+.gs-account .cart-block--link__expand { display: none; }
+.gs-account img { width: 22px; height: auto; display: inline; }
+
+/* ===== Blokttitels ===== */
+.gs-content .block > h2 {
+  font-size: 1.3rem;
+  margin: 0 0 1rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--gs-accent);
+}
+.gs-content .block { margin-bottom: 2.5rem; }
+
+
+/* ===== Productraster (Drupal-structuur: .views-row > .views-col) ===== */
+.views-view-grid .views-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+@media (min-width: 700px)  { .views-view-grid .views-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .views-view-grid .views-row { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.views-view-grid .views-col {
+  width: auto !important;
+  float: none !important;
+  min-width: 0;
+  background: var(--gs-surface);
+  border: 1px solid var(--gs-border);
+  border-radius: 12px;
+  padding: 0.75rem;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.views-view-grid .views-col:hover { transform: translateY(-4px); border-color: var(--gs-accent); }
+.views-view-grid .views-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.views-view-grid .views-field-title { font-weight: 700; margin-top: 0.6rem; overflow-wrap: break-word; }
+.views-view-grid .views-field-title a { color: var(--gs-text); }
+.views-view-grid .views-field-price__number { color: var(--gs-accent); font-weight: 800; margin-top: 0.25rem; }
+.views-view-grid .views-field-field-productcategorie { color: var(--gs-muted); font-size: 0.85rem; }
+
+/* ===== Hero ===== */
+#block-gamestore-pro-hero {
+  background: linear-gradient(135deg, #1b232b 0%, #0e1114 70%);
+  border: 1px solid var(--gs-border);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  margin-bottom: 2.5rem;
+}
+#block-gamestore-pro-hero > h2 { display: none; }
+#block-gamestore-pro-hero p { margin: 0 0 1rem; color: var(--gs-muted); font-size: 1.1rem; }
+#block-gamestore-pro-hero p:first-child {
+  color: var(--gs-text);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+#block-gamestore-pro-hero p a {
+  display: inline-block;
+  background: var(--gs-accent);
+  color: #111;
+  font-weight: 700;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--gs-radius);
+}
+#block-gamestore-pro-hero p a:hover { background: var(--gs-accent-hover); color: #111; }
+
+/* ===== Categorieën ===== */
+.view-categorieen .view-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 700px) {
+  .view-categorieen .view-content { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.view-categorieen .views-row {
+  background: var(--gs-surface);
+  border: 1px solid var(--gs-border);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.view-categorieen .views-row:hover { border-color: var(--gs-accent); transform: translateY(-3px); }
+
+/* ===== Menu: actieve link ===== */
+.gs-header .gs-nav .menu a { color: var(--gs-text); }
+.gs-header .gs-nav .menu a:hover,
+.gs-header .gs-nav .menu a.is-active,
+.gs-header .gs-nav .menu a[aria-current="page"] { color: var(--gs-accent) !important; }

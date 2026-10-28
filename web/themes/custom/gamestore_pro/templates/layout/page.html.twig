@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Gamestore Pro: pagina-template met header, inhoud en footer.
+ */
+#}
+<div class="gs-page">
+
+  <header class="gs-header">
+    <div class="gs-container gs-header__inner">
+      <a class="gs-brand" href="{{ front_page }}" rel="home">
+        <span class="gs-brand__mark">G</span>
+        <span class="gs-brand__name">Game Store</span>
+      </a>
+
+      <nav class="gs-nav" aria-label="Main">
+        {{ page.primary_menu }}
+      </nav>
+
+      <div class="gs-account">
+        {{ page.secondary_menu }}
+        {{ page.header }}
+      </div>
+    </div>
+  </header>
+
+  {% if page.highlighted or page.breadcrumb or page.help %}
+    <div class="gs-container gs-top">
+      {{ page.breadcrumb }}
+      {{ page.highlighted }}
+      {{ page.help }}
+    </div>
+  {% endif %}
+
+  <main class="gs-main">
+    <a id="main-content" tabindex="-1"></a>
+    <div class="gs-container gs-main__inner">
+      <div class="gs-content">
+        {{ page.content }}
+      </div>
+      {% if page.sidebar_first %}
+        <aside class="gs-sidebar">
+          {{ page.sidebar_first }}
+        </aside>
+      {% endif %}
+    </div>
+  </main>
+
+  <footer class="gs-footer">
+    <div class="gs-container gs-footer__inner">
+      {% if page.footer %}
+        {{ page.footer }}
+      {% else %}
+        <p>&copy; {{ 'now'|date('Y') }} {{ site_name }}. Games, consoles en accessoires.</p>
+      {% endif %}
+    </div>
+  </footer>
+
+</div>

@@ -1,0 +1,37 @@
+name: 'Gamestore Pro'
+type: theme
+'base theme': false
+version: 1.0.0
+libraries:
+  - gamestore_pro/base
+  - gamestore_pro/messages
+  - core/normalize
+  - gamestore_pro/design
+libraries-extend:
+  user/drupal.user:
+    - gamestore_pro/user
+  core/drupal.dropbutton:
+    - gamestore_pro/dropbutton
+  core/drupal.dialog:
+    - gamestore_pro/dialog
+  file/drupal.file:
+    - gamestore_pro/file
+  core/drupal.item-list:
+    - gamestore_pro/item-list
+  core/drupal.progress:
+    - gamestore_pro/progress
+  core/drupal.tablesort:
+    - gamestore_pro/drupal.tablesort
+description: ''
+core_version_requirement: ^11
+generator: 'starterkit_theme:11.4.10'
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  help: Help
+  content: Content
+  sidebar_first: 'Sidebar'
+  footer: Footer
