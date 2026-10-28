@@ -1,0 +1,22 @@
+uuid: 08376481-f610-47cc-a17a-ce093963dae7
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - gamestore_theme
+_core:
+  default_config_hash: BZ5tpW7H8X4PVGRm3MImTIHd2tN0eF7zOtp4SpRYUA0
+id: gamestore_theme_messages
+theme: gamestore_theme
+region: highlighted
+weight: -5
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

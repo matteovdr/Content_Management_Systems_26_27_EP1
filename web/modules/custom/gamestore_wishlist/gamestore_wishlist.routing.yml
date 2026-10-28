@@ -14,3 +14,11 @@ gamestore_wishlist.list:
     _title: 'Mijn wishlist'
   requirements:
     _permission: 'use gamestore wishlist'
+
+gamestore_wishlist.admin:
+  path: '/admin/commerce/wishlist'
+  defaults:
+    _controller: '\Drupal\gamestore_wishlist\Controller\WishlistAdminController::overview'
+    _title: 'Wishlist overzicht'
+  requirements:
+    _permission: 'administer gamestore wishlist'

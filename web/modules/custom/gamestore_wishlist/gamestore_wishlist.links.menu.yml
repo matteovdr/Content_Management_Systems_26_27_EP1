@@ -1,0 +1,6 @@
+gamestore_wishlist.admin:
+  title: 'Wishlist overzicht'
+  description: 'Bekijk welke producten klanten op hun wishlist zetten.'
+  route_name: gamestore_wishlist.admin
+  parent: commerce.admin_commerce
+  weight: 20

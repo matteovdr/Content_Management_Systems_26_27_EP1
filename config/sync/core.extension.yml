@@ -62,4 +62,5 @@ module:
 theme:
   olivero: 0
   claro: 0
+  gamestore_theme: 0
 profile: standard

@@ -516,7 +516,7 @@ display:
           exposed: true
           expose:
             operator_id: field_genre_target_id_op
-            label: Genre
+            label: 'Genre (games)'
             description: ''
             use_operator: false
             operator: field_genre_target_id_op

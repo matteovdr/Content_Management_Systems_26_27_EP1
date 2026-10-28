@@ -1,0 +1,22 @@
+uuid: 72109f2d-0ee0-4768-aec7-446d3ecaaa4f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - gamestore_theme
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: gamestore_theme_powered
+theme: gamestore_theme
+region: sidebar_first
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,3 +1,8 @@
 use gamestore wishlist:
   title: 'Use the wishlist'
   description: 'Add and remove products on your own wishlist.'
+
+administer gamestore wishlist:
+  title: 'Administer the wishlist'
+  description: 'View all wishlist items of all customers.'
+  restrict access: true

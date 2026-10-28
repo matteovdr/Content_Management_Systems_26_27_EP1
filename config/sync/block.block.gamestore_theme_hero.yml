@@ -1,0 +1,28 @@
+uuid: 9fd8d4af-8a98-4037-9e27-05500c9d27bc
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:f03e3863-39ea-4b8a-90f1-86447be0e798'
+  module:
+    - block_content
+    - system
+  theme:
+    - gamestore_theme
+id: gamestore_theme_hero
+theme: gamestore_theme
+region: content
+weight: -7
+provider: null
+plugin: 'block_content:f03e3863-39ea-4b8a-90f1-86447be0e798'
+settings:
+  id: 'block_content:f03e3863-39ea-4b8a-90f1-86447be0e798'
+  label: Hero
+  label_display: visible
+  provider: block_content
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

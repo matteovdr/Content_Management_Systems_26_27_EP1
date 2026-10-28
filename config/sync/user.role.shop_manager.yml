@@ -20,6 +20,7 @@ dependencies:
     - contextual
     - file
     - filter
+    - gamestore_wishlist
     - help
     - layout_builder
     - navigation
@@ -50,6 +51,7 @@ permissions:
   - 'access taxonomy overview'
   - 'access user profiles'
   - 'administer commerce_payment'
+  - 'administer gamestore wishlist'
   - 'administer menu'
   - 'administer node published status'
   - 'create accessoire commerce_product'
